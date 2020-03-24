@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Portifólio - Diego Nascimento</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+{% endblock%}
+
+{% block content %}
+    
+    <div id="wrapper">
+        <h1>Aulas</h1>
+    </div>
+
+    <section class="card">
+        
+        {% for item in itens %}
+        <div class="cards" id="{{item.id}}">
+            <div class="cards__image-container {{ 'feature-wrapper' if item.featured }}">
+                <img src="https://img.youtube.com/vi/{{item.id}}/mqdefault.jpg" alt="Imagem de: {{item.title}}">
+                {% if item.featured %}
+                <div class="featured">Featured</div>
+                {% endif %}
+            </div>
+
+            <div class="card__content">
+                <p>{{item.title}}</p>
+            </div>
+
+            <div class="card__info">
+                <p class="card__min">{{item.duration}}</p>
+                <p class="card__price">{{item.price}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </section>
+    
+    <script src="/scripts.js"></script>
+
+{% endblock %}       
